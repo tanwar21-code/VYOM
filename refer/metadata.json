@@ -1,0 +1,6 @@
+{
+  "name": "Lunar Image Registration Studio",
+  "description": "ISRO ground control telemetry simulator for multimodal lunar orbiter image registration and sub-pixel alignment.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

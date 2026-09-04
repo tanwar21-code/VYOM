@@ -1204,11 +1204,77 @@ This is the safest sequence — it front-loads the riskiest technical unknown (d
 
 1. **Prove the concept first, cheaply:** synthetic validation pair with known ground truth (Phase 3) — if this doesn't work, nothing downstream will, and it's the fastest possible way to find out.
 2. **Build the smallest real skeleton:** empty Streamlit app + repo structure (Phase 2) — do this *before or in parallel with* step 1, since it's nearly zero-risk and unblocks deployment testing early.
-3. **Build the simplest functional core:** preprocessing (Phase 4) → baseline SIFT/AKAZE matcher + RANSAC + metrics (Phase 5) — get one full, working, if unglamorous, pipeline before adding any "advanced" algorithm.
-4. **Integrate the genuinely difficult, differentiating component:** the illumination-robust `rift2`-style matcher (Phase 6) — this is your hardest and most important piece; tackle it once the baseline proves the rest of the pipeline is trustworthy, so you can tell whether problems are in the new matcher specifically or somewhere upstream.
-5. **Connect it to something clickable:** wire the Streamlit UI to the real pipeline (Phase 7) — only now, once the underlying science works, invest in the interface.
-6. **Bring in real, messy data:** real Chandrayaan-2/LROC pair (Phase 8) — deliberately done *after* the pipeline is proven on clean synthetic data, so any new failures are clearly attributable to real-data messiness, not pipeline bugs.
-7. **Improve quality and add comparative proof:** algorithm-comparison page (Phase 9), edge-case testing (Phase 10).
-8. **Polish and deploy:** deployment-readiness pass (Phase 11), final UI/demo polish (Phase 12).
+3. **Build the simplest functional core:** preprThe project includes a high-performance FastAPI service that wraps the Python `registration_engine` and provides RESTful endpoints consumed by the React/Vite web application.
 
-**The single riskiest component to test earliest:** the core matching/RANSAC/homography math (Phases 3 and 5) — because every other feature in this project (the UI, the comparisons, the metrics, the demo) is only meaningful once you know the underlying registration actually produces a correct alignment. Everything in this build order exists to surface that risk on day 3, not day 20.
+### Installation
+
+1. **Backend Dependencies**:
+```bash
+pip install -r requirements.txt
+```
+
+2. **Frontend Dependencies**:
+```bash
+cd frontend   # (or cd refer)
+npm install
+```
+
+---
+
+### Running the Full Stack for Local Development
+
+To run the full stack locally, launch the backend and frontend servers in two separate terminal windows:
+
+#### Terminal 1: Backend API (FastAPI)
+Run the uvicorn development server from the repository root:
+```bash
+uvicorn backend.main:app --reload
+```
+- Server URL: `http://localhost:8000`
+- Interactive OpenAPI / Swagger Docs: `http://localhost:8000/docs`
+
+#### Terminal 2: Frontend Web Studio (Vite + React)
+Navigate into the `frontend/` directory (or `refer/`) and start the Vite development server:
+```bash
+cd frontend
+npm run dev
+```
+- Web Application URL: `http://localhost:3000`
+- The frontend connects to the backend using `VITE_API_BASE_URL=http://localhost:8000` configured in `frontend/.env`.
+
+---
+
+### Key API Endpoints
+1. **`GET /health`**: Health check status (`{"status": "ok"}`).
+2. **`GET /demo-pairs`**: Returns available lunar demo pairs located in `data/demo_pairs/` with sensor metadata and asset endpoints.
+3. **`GET /demo-pairs/{pair_id}/source`** & **`GET /demo-pairs/{pair_id}/reference`**: Serves raw satellite images for demo pairs.
+4. **`POST /register`**: Accepts `source_image`, `reference_image` (multipart files), `sensor_pair`, and `algorithm` form parameters. Executes `registration_engine.pipeline.run_pipeline()` and returns the base64-encoded registered image, inlier match points with reprojection residuals, homography matrix, and quantitative metrics (RMSE, inliers, inlier ratio, distribution score, runtime).
+5. **`POST /compare`**: Concurrently benchmarks multiple algorithms (`rift2`, `akaze`, `sift`) on the provided image pair and returns comparative performance metrics.
+underlying registration actually produces a correct alignment. Everything in this build order exists to surface that risk on day 3, not day 20.
+
+---
+
+## 36. FASTAPI BACKEND API (`backend/main.py`)
+
+The project includes a high-performance FastAPI service that wraps the Python `registration_engine` and provides RESTful endpoints consumed by the React/Vite web application.
+
+### Installation
+Ensure all backend dependencies are installed:
+```bash
+pip install -r requirements.txt
+```
+
+### Running the Backend Server
+Start the backend with auto-reload:
+```bash
+uvicorn backend.main:app --reload --port 8000
+```
+The API documentation (Swagger UI) is automatically available at:
+- `http://localhost:8000/docs`
+
+### Key Endpoints
+1. **`GET /health`**: Health check status (`{"status": "ok"}`).
+2. **`GET /demo-pairs`**: Returns all available demo pairs located in `data/demo_pairs/` alongside sensor profiles and file endpoints.
+3. **`GET /demo-pairs/{pair_id}/source`** & **`GET /demo-pairs/{pair_id}/reference`**: Serves raw satellite images for demo pairs.
+4. **`POST /register`**: Accepts `source_image`, `reference_image` (multipart files), `sensor_pair`, and `algorithm` form parameters. Executes `registration_engine.pipeline.run_pipeline()` and returns the base64-encoded registered image, inlier match points with reprojection residuals, and quantitative metrics (RMSE, inliers, inlier ratio, distribution score, runtime).
+5. **`POST /compare`**: Runs the pipeline across multiple algorithms (`rift2`, `akaze`, `sift`) and returns comparative benchmark telemetry.

@@ -1,0 +1,536 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/@fs/C:\\Users\\himan\\OneDrive\\Desktop\\SIH 2026\\VYOM\\VYOM\\refer\\src\\components\\KeypointTelemetryRadar.tsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=c4aae9f0"; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+var _s = $RefreshSig$();
+import __vite__cjsImport1_react from "/node_modules/.vite/deps/react.js?v=c4aae9f0"; const useState = __vite__cjsImport1_react["useState"];
+export default function KeypointTelemetryRadar({ keypoints }) {
+  _s();
+  const [hoveredPoint, setHoveredPoint] = useState(null);
+  const svgWidth = 600;
+  const svgHeight = 340;
+  const allX = keypoints.flatMap((k) => [k.x, k.refX]);
+  const allY = keypoints.flatMap((k) => [k.y, k.refY]);
+  const minX = allX.length ? Math.min(...allX) : 0;
+  const maxX = allX.length ? Math.max(...allX) : 600;
+  const minY = allY.length ? Math.min(...allY) : 0;
+  const maxY = allY.length ? Math.max(...allY) : 340;
+  const spanX = Math.max(maxX - minX, 1);
+  const spanY = Math.max(maxY - minY, 1);
+  const padX = 40;
+  const padY = 35;
+  const usableW = svgWidth - padX * 2;
+  const usableH = svgHeight - padY * 2;
+  const sx = (x) => padX + (x - minX) / spanX * usableW;
+  const sy = (y) => padY + (y - minY) / spanY * usableH;
+  return /* @__PURE__ */ jsxDEV("div", { className: "bg-[#080C12] border border-[#1C2737] rounded-lg p-4 relative shadow-xl flex flex-col justify-between space-y-3", children: [
+    /* @__PURE__ */ jsxDEV("div", { className: "flex flex-wrap items-center justify-between gap-2 border-b border-[#1A2536] pb-2.5", children: [
+      /* @__PURE__ */ jsxDEV("div", { className: "flex items-center gap-2", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_#3FD0E0] animate-pulse" }, void 0, false, {
+          fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+          lineNumber: 38,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("h3", { className: "text-[10px] font-mono font-bold text-slate-200 uppercase tracking-wider", children: [
+          "RANSAC DISPERSION MATRIX (",
+          keypoints.length,
+          " TIE-POINTS)"
+        ] }, void 0, true, {
+          fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+          lineNumber: 39,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+        lineNumber: 37,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "text-[9px] font-mono text-slate-500", children: [
+        "SOLVING: ",
+        /* @__PURE__ */ jsxDEV("span", { className: "text-[#3FD0E0]", children: "RIFT2-PHASE_CONGRUENCY" }, void 0, false, {
+          fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+          lineNumber: 44,
+          columnNumber: 20
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+        lineNumber: 43,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+      lineNumber: 36,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "relative h-72 lg:h-80 w-full bg-[#06090F] rounded-md border border-slate-800 overflow-hidden select-none", children: [
+      /* @__PURE__ */ jsxDEV(
+        "svg",
+        {
+          viewBox: `0 0 ${svgWidth} ${svgHeight}`,
+          className: "w-full h-full block",
+          xmlns: "http://www.w3.org/2000/svg",
+          children: [
+            /* @__PURE__ */ jsxDEV("defs", { children: /* @__PURE__ */ jsxDEV("radialGradient", { id: "radarRadial", cx: "50%", cy: "50%", r: "50%", children: [
+              /* @__PURE__ */ jsxDEV("stop", { offset: "0%", stopColor: "#3FD0E0", stopOpacity: "0.06" }, void 0, false, {
+                fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+                lineNumber: 57,
+                columnNumber: 15
+              }, this),
+              /* @__PURE__ */ jsxDEV("stop", { offset: "60%", stopColor: "#101826", stopOpacity: "0.02" }, void 0, false, {
+                fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+                lineNumber: 58,
+                columnNumber: 15
+              }, this),
+              /* @__PURE__ */ jsxDEV("stop", { offset: "100%", stopColor: "#06090F", stopOpacity: "0" }, void 0, false, {
+                fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+                lineNumber: 59,
+                columnNumber: 15
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+              lineNumber: 56,
+              columnNumber: 13
+            }, this) }, void 0, false, {
+              fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+              lineNumber: 55,
+              columnNumber: 11
+            }, this),
+            /* @__PURE__ */ jsxDEV("rect", { width: svgWidth, height: svgHeight, fill: "url(#radarRadial)" }, void 0, false, {
+              fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+              lineNumber: 64,
+              columnNumber: 11
+            }, this),
+            [100, 200, 300, 400, 500].map(
+              (gx) => /* @__PURE__ */ jsxDEV(
+                "line",
+                {
+                  x1: gx,
+                  y1: 0,
+                  x2: gx,
+                  y2: svgHeight,
+                  stroke: "#131C28",
+                  strokeWidth: "0.75"
+                },
+                `grid-x-${gx}`,
+                false,
+                {
+                  fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+                  lineNumber: 68,
+                  columnNumber: 11
+                },
+                this
+              )
+            ),
+            [60, 120, 180, 240, 300].map(
+              (gy) => /* @__PURE__ */ jsxDEV(
+                "line",
+                {
+                  x1: 0,
+                  y1: gy,
+                  x2: svgWidth,
+                  y2: gy,
+                  stroke: "#131C28",
+                  strokeWidth: "0.75"
+                },
+                `grid-y-${gy}`,
+                false,
+                {
+                  fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+                  lineNumber: 79,
+                  columnNumber: 11
+                },
+                this
+              )
+            ),
+            /* @__PURE__ */ jsxDEV(
+              "circle",
+              {
+                cx: svgWidth / 2,
+                cy: svgHeight / 2,
+                r: 50,
+                fill: "none",
+                stroke: "#172435",
+                strokeWidth: "1",
+                strokeDasharray: "2 3"
+              },
+              void 0,
+              false,
+              {
+                fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+                lineNumber: 91,
+                columnNumber: 11
+              },
+              this
+            ),
+            /* @__PURE__ */ jsxDEV(
+              "circle",
+              {
+                cx: svgWidth / 2,
+                cy: svgHeight / 2,
+                r: 105,
+                fill: "none",
+                stroke: "#1B2A3E",
+                strokeWidth: "1"
+              },
+              void 0,
+              false,
+              {
+                fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+                lineNumber: 100,
+                columnNumber: 11
+              },
+              this
+            ),
+            /* @__PURE__ */ jsxDEV(
+              "circle",
+              {
+                cx: svgWidth / 2,
+                cy: svgHeight / 2,
+                r: 160,
+                fill: "none",
+                stroke: "#172435",
+                strokeWidth: "1",
+                strokeDasharray: "4 4"
+              },
+              void 0,
+              false,
+              {
+                fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+                lineNumber: 108,
+                columnNumber: 11
+              },
+              this
+            ),
+            /* @__PURE__ */ jsxDEV(
+              "line",
+              {
+                x1: svgWidth / 2,
+                y1: 15,
+                x2: svgWidth / 2,
+                y2: svgHeight - 15,
+                stroke: "#1B293E",
+                strokeWidth: "1"
+              },
+              void 0,
+              false,
+              {
+                fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+                lineNumber: 119,
+                columnNumber: 11
+              },
+              this
+            ),
+            /* @__PURE__ */ jsxDEV(
+              "line",
+              {
+                x1: 20,
+                y1: svgHeight / 2,
+                x2: svgWidth - 20,
+                y2: svgHeight / 2,
+                stroke: "#1B293E",
+                strokeWidth: "1"
+              },
+              void 0,
+              false,
+              {
+                fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+                lineNumber: 127,
+                columnNumber: 11
+              },
+              this
+            ),
+            /* @__PURE__ */ jsxDEV("text", { x: 8, y: 20, fill: "#4B607E", fontSize: "9", fontFamily: "monospace", children: "0,0" }, void 0, false, {
+              fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+              lineNumber: 137,
+              columnNumber: 11
+            }, this),
+            /* @__PURE__ */ jsxDEV("text", { x: svgWidth - 45, y: svgHeight - 8, fill: "#4B607E", fontSize: "9", fontFamily: "monospace", children: "600,340" }, void 0, false, {
+              fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+              lineNumber: 140,
+              columnNumber: 11
+            }, this),
+            /* @__PURE__ */ jsxDEV("text", { x: svgWidth / 2 + 5, y: 15, fill: "#4B607E", fontSize: "9", fontFamily: "monospace", children: "Y-NADIR" }, void 0, false, {
+              fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+              lineNumber: 143,
+              columnNumber: 11
+            }, this),
+            /* @__PURE__ */ jsxDEV("text", { x: svgWidth - 55, y: svgHeight / 2 - 6, fill: "#4B607E", fontSize: "9", fontFamily: "monospace", children: "X-ORBIT" }, void 0, false, {
+              fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+              lineNumber: 146,
+              columnNumber: 11
+            }, this),
+            keypoints.map(
+              (kp) => /* @__PURE__ */ jsxDEV(
+                "line",
+                {
+                  x1: sx(kp.x),
+                  y1: sy(kp.y),
+                  x2: sx(kp.refX),
+                  y2: sy(kp.refY),
+                  stroke: "rgba(63, 208, 224, 0.45)",
+                  strokeWidth: hoveredPoint?.id === kp.id ? 2 : 1,
+                  strokeDasharray: hoveredPoint?.id === kp.id ? void 0 : "2 2"
+                },
+                `vector-${kp.id}`,
+                false,
+                {
+                  fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+                  lineNumber: 152,
+                  columnNumber: 11
+                },
+                this
+              )
+            ),
+            keypoints.map((kp, idx) => {
+              const isHovered = hoveredPoint?.id === kp.id;
+              const ptX = sx(kp.x);
+              const ptY = sy(kp.y);
+              const refPtX = sx(kp.refX);
+              const refPtY = sy(kp.refY);
+              return /* @__PURE__ */ jsxDEV(
+                "g",
+                {
+                  className: "cursor-pointer",
+                  onMouseEnter: () => setHoveredPoint(kp),
+                  onMouseLeave: () => setHoveredPoint(null),
+                  children: [
+                    /* @__PURE__ */ jsxDEV(
+                      "circle",
+                      {
+                        cx: refPtX,
+                        cy: refPtY,
+                        r: isHovered ? 4.5 : 2.75,
+                        fill: "none",
+                        stroke: "#3FD0E0",
+                        strokeWidth: "1.5",
+                        opacity: 0.85
+                      },
+                      void 0,
+                      false,
+                      {
+                        fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+                        lineNumber: 179,
+                        columnNumber: 17
+                      },
+                      this
+                    ),
+                    /* @__PURE__ */ jsxDEV(
+                      "circle",
+                      {
+                        cx: ptX,
+                        cy: ptY,
+                        r: isHovered ? 5.5 : 3.5,
+                        fill: "#FF9F43",
+                        className: "animate-fadeIn",
+                        style: {
+                          animationDelay: `${idx * 34}ms`,
+                          animationFillMode: "both"
+                        }
+                      },
+                      void 0,
+                      false,
+                      {
+                        fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+                        lineNumber: 190,
+                        columnNumber: 17
+                      },
+                      this
+                    ),
+                    isHovered && /* @__PURE__ */ jsxDEV(
+                      "circle",
+                      {
+                        cx: ptX,
+                        cy: ptY,
+                        r: 11,
+                        fill: "none",
+                        stroke: "#FF9F43",
+                        strokeWidth: "1",
+                        strokeDasharray: "3 2",
+                        className: "animate-spin"
+                      },
+                      void 0,
+                      false,
+                      {
+                        fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+                        lineNumber: 204,
+                        columnNumber: 17
+                      },
+                      this
+                    )
+                  ]
+                },
+                kp.id,
+                true,
+                {
+                  fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+                  lineNumber: 172,
+                  columnNumber: 15
+                },
+                this
+              );
+            })
+          ]
+        },
+        void 0,
+        true,
+        {
+          fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+          lineNumber: 50,
+          columnNumber: 9
+        },
+        this
+      ),
+      /* @__PURE__ */ jsxDEV("div", { className: "absolute bottom-2.5 left-2.5 p-2.5 rounded bg-[#090D13]/90 backdrop-blur border border-slate-700/80 text-[11px] font-mono pointer-events-none max-w-sm", children: hoveredPoint ? /* @__PURE__ */ jsxDEV("div", { className: "space-y-0.5 animate-fadeIn", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "text-amber-400 font-bold flex items-center justify-between", children: [
+          /* @__PURE__ */ jsxDEV("span", { children: [
+            "POINT TELEMETRY: ",
+            hoveredPoint.id
+          ] }, void 0, true, {
+            fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+            lineNumber: 225,
+            columnNumber: 17
+          }, this),
+          /* @__PURE__ */ jsxDEV("span", { className: "text-[10px] text-emerald-400 font-normal", children: "RANSAC INLIER" }, void 0, false, {
+            fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+            lineNumber: 226,
+            columnNumber: 17
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+          lineNumber: 224,
+          columnNumber: 15
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "text-slate-300", children: [
+          "SOURCE CH-2: [",
+          hoveredPoint.x,
+          ", ",
+          hoveredPoint.y,
+          "] px"
+        ] }, void 0, true, {
+          fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+          lineNumber: 230,
+          columnNumber: 15
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "text-cyan-300", children: [
+          "REF LROC: [",
+          hoveredPoint.refX,
+          ", ",
+          hoveredPoint.refY,
+          "] px"
+        ] }, void 0, true, {
+          fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+          lineNumber: 233,
+          columnNumber: 15
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "text-emerald-400", children: [
+          "RESIDUAL: ",
+          hoveredPoint.residual.toFixed(2),
+          " px (ΔX=",
+          hoveredPoint.dx,
+          "px, ΔY=",
+          hoveredPoint.dy,
+          "px)"
+        ] }, void 0, true, {
+          fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+          lineNumber: 236,
+          columnNumber: 15
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+        lineNumber: 223,
+        columnNumber: 11
+      }, this) : /* @__PURE__ */ jsxDEV("div", { className: "text-slate-400 flex items-center gap-2", children: [
+        /* @__PURE__ */ jsxDEV("span", { className: "w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping" }, void 0, false, {
+          fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+          lineNumber: 242,
+          columnNumber: 15
+        }, this),
+        /* @__PURE__ */ jsxDEV("span", { children: "HOVER OVER ANY TIE-POINT TO READ SUB-PIXEL VECTOR TELEMETRY" }, void 0, false, {
+          fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+          lineNumber: 243,
+          columnNumber: 15
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+        lineNumber: 241,
+        columnNumber: 11
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+        lineNumber: 221,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "absolute top-2.5 right-2.5 flex items-center gap-3 bg-[#0A0E14]/90 backdrop-blur border border-slate-800 px-3 py-1.5 rounded text-[10px] font-mono", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "flex items-center gap-1.5", children: [
+          /* @__PURE__ */ jsxDEV("span", { className: "w-2.5 h-2.5 rounded-full bg-[#FF9F43]" }, void 0, false, {
+            fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+            lineNumber: 251,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("span", { className: "text-slate-300", children: "CH-2 OHRC (Source)" }, void 0, false, {
+            fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+            lineNumber: 252,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+          lineNumber: 250,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "flex items-center gap-1.5", children: [
+          /* @__PURE__ */ jsxDEV("span", { className: "w-2.5 h-2.5 rounded-full border border-[#3FD0E0]" }, void 0, false, {
+            fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+            lineNumber: 255,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("span", { className: "text-slate-300", children: "LRO NAC (Reference)" }, void 0, false, {
+            fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+            lineNumber: 256,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+          lineNumber: 254,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+        lineNumber: 249,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+      lineNumber: 49,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, true, {
+    fileName: "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx",
+    lineNumber: 34,
+    columnNumber: 5
+  }, this);
+}
+_s(KeypointTelemetryRadar, "IHq9VLNMLz3UzA/UD32nBEumj7o=");
+_c = KeypointTelemetryRadar;
+var _c;
+$RefreshReg$(_c, "KeypointTelemetryRadar");
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+function $RefreshReg$(type, id) {
+  return RefreshRuntime.register(type, "C:/Users/himan/OneDrive/Desktop/SIH 2026/VYOM/VYOM/refer/src/components/KeypointTelemetryRadar.tsx " + id);
+}
+function $RefreshSig$() {
+  return RefreshRuntime.createSignatureFunctionForTransform();
+}
+
+//# sourceMappingURL=data:application/json;base64,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QUEsV0FmRjtBQUFBO0FBQUE7QUFBQTtBQUFBLGFBZ0JBLElBRUEsdUJBQUMsU0FBSSxXQUFVLDBDQUNiO0FBQUEsK0JBQUMsVUFBSyxXQUFVLHVEQUFoQjtBQUFBO0FBQUE7QUFBQTtBQUFBLGVBQW1FO0FBQUEsUUFDbkUsdUJBQUMsVUFBSywyRUFBTjtBQUFBO0FBQUE7QUFBQTtBQUFBLGVBQWlFO0FBQUEsV0FGbkU7QUFBQTtBQUFBO0FBQUE7QUFBQSxhQUdBLEtBdkJKO0FBQUE7QUFBQTtBQUFBO0FBQUEsYUF5QkE7QUFBQSxNQUdBLHVCQUFDLFNBQUksV0FBVSxzSkFDYjtBQUFBLCtCQUFDLFNBQUksV0FBVSw2QkFDYjtBQUFBLGlDQUFDLFVBQUssV0FBVSwyQ0FBaEI7QUFBQTtBQUFBO0FBQUE7QUFBQSxpQkFBdUQ7QUFBQSxVQUN2RCx1QkFBQyxVQUFLLFdBQVUsa0JBQWlCLGtDQUFqQztBQUFBO0FBQUE7QUFBQTtBQUFBLGlCQUFtRDtBQUFBLGFBRnJEO0FBQUE7QUFBQTtBQUFBO0FBQUEsZUFHQTtBQUFBLFFBQ0EsdUJBQUMsU0FBSSxXQUFVLDZCQUNiO0FBQUEsaUNBQUMsVUFBSyxXQUFVLHNEQUFoQjtBQUFBO0FBQUE7QUFBQTtBQUFBLGlCQUFrRTtBQUFBLFVBQ2xFLHVCQUFDLFVBQUssV0FBVSxrQkFBaUIsbUNBQWpDO0FBQUE7QUFBQTtBQUFBO0FBQUEsaUJBQW9EO0FBQUEsYUFGdEQ7QUFBQTtBQUFBO0FBQUE7QUFBQSxlQUdBO0FBQUEsV0FSRjtBQUFBO0FBQUE7QUFBQTtBQUFBLGFBU0E7QUFBQSxTQWpORjtBQUFBO0FBQUE7QUFBQTtBQUFBLFdBa05BO0FBQUEsT0FqT0Y7QUFBQTtBQUFBO0FBQUE7QUFBQSxTQWtPQTtBQUVKO0FBQUM5QyxHQTlQdUJGLHdCQUFzQjtBQUFBLEtBQXRCQTtBQUFzQixJQUFBaUQ7QUFBQSxhQUFBQSxJQUFBIiwibmFtZXMiOlsidXNlU3RhdGUiLCJLZXlwb2ludFRlbGVtZXRyeVJhZGFyIiwia2V5cG9pbnRzIiwiX3MiLCJob3ZlcmVkUG9pbnQiLCJzZXRIb3ZlcmVkUG9pbnQiLCJzdmdXaWR0aCIsInN2Z0hlaWdodCIsImFsbFgiLCJmbGF0TWFwIiwiayIsIngiLCJyZWZYIiwiYWxsWSIsInkiLCJyZWZZIiwibWluWCIsImxlbmd0aCIsIk1hdGgiLCJtaW4iLCJtYXhYIiwibWF4IiwibWluWSIsIm1heFkiLCJzcGFuWCIsInNwYW5ZIiwicGFkWCIsInBhZFkiLCJ1c2FibGVXIiwidXNhYmxlSCIsInN4Iiwic3kiLCJtYXAiLCJneCIsImd5Iiwia3AiLCJpZCIsInVuZGVmaW5lZCIsImlkeCIsImlzSG92ZXJlZCIsInB0WCIsInB0WSIsInJlZlB0WCIsInJlZlB0WSIsImFuaW1hdGlvbkRlbGF5IiwiYW5pbWF0aW9uRmlsbE1vZGUiLCJyZXNpZHVhbCIsInRvRml4ZWQiLCJkeCIsImR5IiwiX2MiXSwiaWdub3JlTGlzdCI6W10sInNvdXJjZXMiOlsiS2V5cG9pbnRUZWxlbWV0cnlSYWRhci50c3giXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgdXNlU3RhdGUgfSBmcm9tICdyZWFjdCc7XG5pbXBvcnQgeyBLZXlwb2ludCB9IGZyb20gJy4uL3R5cGVzJztcblxuaW50ZXJmYWNlIEtleXBvaW50VGVsZW1ldHJ5UmFkYXJQcm9wcyB7XG4gIGtleXBvaW50czogS2V5cG9pbnRbXTtcbn1cblxuZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24gS2V5cG9pbnRUZWxlbWV0cnlSYWRhcih7IGtleXBvaW50cyB9OiBLZXlwb2ludFRlbGVtZXRyeVJhZGFyUHJvcHMpIHtcbiAgY29uc3QgW2hvdmVyZWRQb2ludCwgc2V0SG92ZXJlZFBvaW50XSA9IHVzZVN0YXRlPEtleXBvaW50IHwgbnVsbD4obnVsbCk7XG5cbiAgLy8gU1ZHIGRpbWVuc2lvbnNcbiAgY29uc3Qgc3ZnV2lkdGggPSA2MDA7XG4gIGNvbnN0IHN2Z0hlaWdodCA9IDM0MDtcblxuICAvLyBEeW5hbWljYWxseSBzY2FsZSBjb29yZGluYXRlcyBmcm9tIGltYWdlIHNwYWNlIHRvIHJhZGFyIGNhbnZhc1xuICBjb25zdCBhbGxYID0ga2V5cG9pbnRzLmZsYXRNYXAoKGspID0+IFtrLngsIGsucmVmWF0pO1xuICBjb25zdCBhbGxZID0ga2V5cG9pbnRzLmZsYXRNYXAoKGspID0+IFtrLnksIGsucmVmWV0pO1xuICBjb25zdCBtaW5YID0gYWxsWC5sZW5ndGggPyBNYXRoLm1pbiguLi5hbGxYKSA6IDA7XG4gIGNvbnN0IG1heFggPSBhbGxYLmxlbmd0aCA/IE1hdGgubWF4KC4uLmFsbFgpIDogNjAwO1xuICBjb25zdCBtaW5ZID0gYWxsWS5sZW5ndGggPyBNYXRoLm1pbiguLi5hbGxZKSA6IDA7XG4gIGNvbnN0IG1heFkgPSBhbGxZLmxlbmd0aCA/IE1hdGgubWF4KC4uLmFsbFkpIDogMzQwO1xuICBjb25zdCBzcGFuWCA9IE1hdGgubWF4KG1heFggLSBtaW5YLCAxKTtcbiAgY29uc3Qgc3BhblkgPSBNYXRoLm1heChtYXhZIC0gbWluWSwgMSk7XG5cbiAgY29uc3QgcGFkWCA9IDQwO1xuICBjb25zdCBwYWRZID0gMzU7XG4gIGNvbnN0IHVzYWJsZVcgPSBzdmdXaWR0aCAtIHBhZFggKiAyO1xuICBjb25zdCB1c2FibGVIID0gc3ZnSGVpZ2h0IC0gcGFkWSAqIDI7XG5cbiAgY29uc3Qgc3ggPSAoeDogbnVtYmVyKSA9PiBwYWRYICsgKCh4IC0gbWluWCkgLyBzcGFuWCkgKiB1c2FibGVXO1xuICBjb25zdCBzeSA9ICh5OiBudW1iZXIpID0+IHBhZFkgKyAoKHkgLSBtaW5ZKSAvIHNwYW5ZKSAqIHVzYWJsZUg7XG5cbiAgcmV0dXJuIChcbiAgICA8ZGl2IGNsYXNzTmFtZT1cImJnLVsjMDgwQzEyXSBib3JkZXIgYm9yZGVyLVsjMUMyNzM3XSByb3VuZGVkLWxnIHAtNCByZWxhdGl2ZSBzaGFkb3cteGwgZmxleCBmbGV4LWNvbCBqdXN0aWZ5LWJldHdlZW4gc3BhY2UteS0zXCI+XG4gICAgICB7LyogSGVhZGVyIGJhciAqL31cbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBmbGV4LXdyYXAgaXRlbXMtY2VudGVyIGp1c3RpZnktYmV0d2VlbiBnYXAtMiBib3JkZXItYiBib3JkZXItWyMxQTI1MzZdIHBiLTIuNVwiPlxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZsZXggaXRlbXMtY2VudGVyIGdhcC0yXCI+XG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ3LTIgaC0yIHJvdW5kZWQtZnVsbCBiZy1jeWFuLTQwMCBzaGFkb3ctWzBfMF84cHhfIzNGRDBFMF0gYW5pbWF0ZS1wdWxzZVwiPjwvZGl2PlxuICAgICAgICAgIDxoMyBjbGFzc05hbWU9XCJ0ZXh0LVsxMHB4XSBmb250LW1vbm8gZm9udC1ib2xkIHRleHQtc2xhdGUtMjAwIHVwcGVyY2FzZSB0cmFja2luZy13aWRlclwiPlxuICAgICAgICAgICAgUkFOU0FDIERJU1BFUlNJT04gTUFUUklYICh7a2V5cG9pbnRzLmxlbmd0aH0gVElFLVBPSU5UUylcbiAgICAgICAgICA8L2gzPlxuICAgICAgICA8L2Rpdj5cbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0ZXh0LVs5cHhdIGZvbnQtbW9ubyB0ZXh0LXNsYXRlLTUwMFwiPlxuICAgICAgICAgIFNPTFZJTkc6IDxzcGFuIGNsYXNzTmFtZT1cInRleHQtWyMzRkQwRTBdXCI+UklGVDItUEhBU0VfQ09OR1JVRU5DWTwvc3Bhbj5cbiAgICAgICAgPC9kaXY+XG4gICAgICA8L2Rpdj5cblxuICAgICAgey8qIFJhZGFyIHNjYXR0ZXIgY2FudmFzIGFyZWEgKi99XG4gICAgICA8ZGl2IGNsYXNzTmFtZT1cInJlbGF0aXZlIGgtNzIgbGc6aC04MCB3LWZ1bGwgYmctWyMwNjA5MEZdIHJvdW5kZWQtbWQgYm9yZGVyIGJvcmRlci1zbGF0ZS04MDAgb3ZlcmZsb3ctaGlkZGVuIHNlbGVjdC1ub25lXCI+XG4gICAgICAgIDxzdmdcbiAgICAgICAgICB2aWV3Qm94PXtgMCAwICR7c3ZnV2lkdGh9ICR7c3ZnSGVpZ2h0fWB9XG4gICAgICAgICAgY2xhc3NOYW1lPVwidy1mdWxsIGgtZnVsbCBibG9ja1wiXG4gICAgICAgICAgeG1sbnM9XCJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Z1wiXG4gICAgICAgID5cbiAgICAgICAgICA8ZGVmcz5cbiAgICAgICAgICAgIDxyYWRpYWxHcmFkaWVudCBpZD1cInJhZGFyUmFkaWFsXCIgY3g9XCI1MCVcIiBjeT1cIjUwJVwiIHI9XCI1MCVcIj5cbiAgICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PVwiMCVcIiBzdG9wQ29sb3I9XCIjM0ZEMEUwXCIgc3RvcE9wYWNpdHk9XCIwLjA2XCIgLz5cbiAgICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PVwiNjAlXCIgc3RvcENvbG9yPVwiIzEwMTgyNlwiIHN0b3BPcGFjaXR5PVwiMC4wMlwiIC8+XG4gICAgICAgICAgICAgIDxzdG9wIG9mZnNldD1cIjEwMCVcIiBzdG9wQ29sb3I9XCIjMDYwOTBGXCIgc3RvcE9wYWNpdHk9XCIwXCIgLz5cbiAgICAgICAgICAgIDwvcmFkaWFsR3JhZGllbnQ+XG4gICAgICAgICAgPC9kZWZzPlxuXG4gICAgICAgICAgey8qIEJhY2tncm91bmQgc3VidGxlIHJhZGFyIGdsb3cgKi99XG4gICAgICAgICAgPHJlY3Qgd2lkdGg9e3N2Z1dpZHRofSBoZWlnaHQ9e3N2Z0hlaWdodH0gZmlsbD1cInVybCgjcmFkYXJSYWRpYWwpXCIgLz5cblxuICAgICAgICAgIHsvKiBUZWxlbWV0cnkgQ29vcmRpbmF0ZSBHcmlkIExpbmVzICovfVxuICAgICAgICAgIHtbMTAwLCAyMDAsIDMwMCwgNDAwLCA1MDBdLm1hcCgoZ3gpID0+IChcbiAgICAgICAgICAgIDxsaW5lXG4gICAgICAgICAgICAgIGtleT17YGdyaWQteC0ke2d4fWB9XG4gICAgICAgICAgICAgIHgxPXtneH1cbiAgICAgICAgICAgICAgeTE9ezB9XG4gICAgICAgICAgICAgIHgyPXtneH1cbiAgICAgICAgICAgICAgeTI9e3N2Z0hlaWdodH1cbiAgICAgICAgICAgICAgc3Ryb2tlPVwiIzEzMUMyOFwiXG4gICAgICAgICAgICAgIHN0cm9rZVdpZHRoPVwiMC43NVwiXG4gICAgICAgICAgICAvPlxuICAgICAgICAgICkpfVxuICAgICAgICAgIHtbNjAsIDEyMCwgMTgwLCAyNDAsIDMwMF0ubWFwKChneSkgPT4gKFxuICAgICAgICAgICAgPGxpbmVcbiAgICAgICAgICAgICAga2V5PXtgZ3JpZC15LSR7Z3l9YH1cbiAgICAgICAgICAgICAgeDE9ezB9XG4gICAgICAgICAgICAgIHkxPXtneX1cbiAgICAgICAgICAgICAgeDI9e3N2Z1dpZHRofVxuICAgICAgICAgICAgICB5Mj17Z3l9XG4gICAgICAgICAgICAgIHN0cm9rZT1cIiMxMzFDMjhcIlxuICAgICAgICAgICAgICBzdHJva2VXaWR0aD1cIjAuNzVcIlxuICAgICAgICAgICAgLz5cbiAgICAgICAgICApKX1cblxuICAgICAgICAgIHsvKiBSYWRhciBjb25jZW50cmljIGNpcmN1bGFyIHJhbmdlIHJpbmdzICovfVxuICAgICAgICAgIDxjaXJjbGVcbiAgICAgICAgICAgIGN4PXtzdmdXaWR0aCAvIDJ9XG4gICAgICAgICAgICBjeT17c3ZnSGVpZ2h0IC8gMn1cbiAgICAgICAgICAgIHI9ezUwfVxuICAgICAgICAgICAgZmlsbD1cIm5vbmVcIlxuICAgICAgICAgICAgc3Ryb2tlPVwiIzE3MjQzNVwiXG4gICAgICAgICAgICBzdHJva2VXaWR0aD1cIjFcIlxuICAgICAgICAgICAgc3Ryb2tlRGFzaGFycmF5PVwiMiAzXCJcbiAgICAgICAgICAvPlxuICAgICAgICAgIDxjaXJjbGVcbiAgICAgICAgICAgIGN4PXtzdmdXaWR0aCAvIDJ9XG4gICAgICAgICAgICBjeT17c3ZnSGVpZ2h0IC8gMn1cbiAgICAgICAgICAgIHI9ezEwNX1cbiAgICAgICAgICAgIGZpbGw9XCJub25lXCJcbiAgICAgICAgICAgIHN0cm9rZT1cIiMxQjJBM0VcIlxuICAgICAgICAgICAgc3Ryb2tlV2lkdGg9XCIxXCJcbiAgICAgICAgICAvPlxuICAgICAgICAgIDxjaXJjbGVcbiAgICAgICAgICAgIGN4PXtzdmdXaWR0aCAvIDJ9XG4gICAgICAgICAgICBjeT17c3ZnSGVpZ2h0IC8gMn1cbiAgICAgICAgICAgIHI9ezE2MH1cbiAgICAgICAgICAgIGZpbGw9XCJub25lXCJcbiAgICAgICAgICAgIHN0cm9rZT1cIiMxNzI0MzVcIlxuICAgICAgICAgICAgc3Ryb2tlV2lkdGg9XCIxXCJcbiAgICAgICAgICAgIHN0cm9rZURhc2hhcnJheT1cIjQgNFwiXG4gICAgICAgICAgLz5cblxuICAgICAgICAgIHsvKiBDZW50ZXIgYXhpcyBjcm9zc2hhaXJzICovfVxuICAgICAgICAgIDxsaW5lXG4gICAgICAgICAgICB4MT17c3ZnV2lkdGggLyAyfVxuICAgICAgICAgICAgeTE9ezE1fVxuICAgICAgICAgICAgeDI9e3N2Z1dpZHRoIC8gMn1cbiAgICAgICAgICAgIHkyPXtzdmdIZWlnaHQgLSAxNX1cbiAgICAgICAgICAgIHN0cm9rZT1cIiMxQjI5M0VcIlxuICAgICAgICAgICAgc3Ryb2tlV2lkdGg9XCIxXCJcbiAgICAgICAgICAvPlxuICAgICAgICAgIDxsaW5lXG4gICAgICAgICAgICB4MT17MjB9XG4gICAgICAgICAgICB5MT17c3ZnSGVpZ2h0IC8gMn1cbiAgICAgICAgICAgIHgyPXtzdmdXaWR0aCAtIDIwfVxuICAgICAgICAgICAgeTI9e3N2Z0hlaWdodCAvIDJ9XG4gICAgICAgICAgICBzdHJva2U9XCIjMUIyOTNFXCJcbiAgICAgICAgICAgIHN0cm9rZVdpZHRoPVwiMVwiXG4gICAgICAgICAgLz5cblxuICAgICAgICAgIHsvKiBNb25vc3BhY2UgQXhpcyBDb29yZGluYXRlIExhYmVscyAqL31cbiAgICAgICAgICA8dGV4dCB4PXs4fSB5PXsyMH0gZmlsbD1cIiM0QjYwN0VcIiBmb250U2l6ZT1cIjlcIiBmb250RmFtaWx5PVwibW9ub3NwYWNlXCI+XG4gICAgICAgICAgICAwLDBcbiAgICAgICAgICA8L3RleHQ+XG4gICAgICAgICAgPHRleHQgeD17c3ZnV2lkdGggLSA0NX0geT17c3ZnSGVpZ2h0IC0gOH0gZmlsbD1cIiM0QjYwN0VcIiBmb250U2l6ZT1cIjlcIiBmb250RmFtaWx5PVwibW9ub3NwYWNlXCI+XG4gICAgICAgICAgICA2MDAsMzQwXG4gICAgICAgICAgPC90ZXh0PlxuICAgICAgICAgIDx0ZXh0IHg9e3N2Z1dpZHRoIC8gMiArIDV9IHk9ezE1fSBmaWxsPVwiIzRCNjA3RVwiIGZvbnRTaXplPVwiOVwiIGZvbnRGYW1pbHk9XCJtb25vc3BhY2VcIj5cbiAgICAgICAgICAgIFktTkFESVJcbiAgICAgICAgICA8L3RleHQ+XG4gICAgICAgICAgPHRleHQgeD17c3ZnV2lkdGggLSA1NX0geT17c3ZnSGVpZ2h0IC8gMiAtIDZ9IGZpbGw9XCIjNEI2MDdFXCIgZm9udFNpemU9XCI5XCIgZm9udEZhbWlseT1cIm1vbm9zcGFjZVwiPlxuICAgICAgICAgICAgWC1PUkJJVFxuICAgICAgICAgIDwvdGV4dD5cblxuICAgICAgICAgIHsvKiBGYWludCBkaXNwbGFjZW1lbnQgdmVjdG9ycyBjb25uZWN0aW5nIHNvdXJjZSB0aWUtcG9pbnQgdG8gcmVmZXJlbmNlIHBvc2l0aW9uICovfVxuICAgICAgICAgIHtrZXlwb2ludHMubWFwKChrcCkgPT4gKFxuICAgICAgICAgICAgPGxpbmVcbiAgICAgICAgICAgICAga2V5PXtgdmVjdG9yLSR7a3AuaWR9YH1cbiAgICAgICAgICAgICAgeDE9e3N4KGtwLngpfVxuICAgICAgICAgICAgICB5MT17c3koa3AueSl9XG4gICAgICAgICAgICAgIHgyPXtzeChrcC5yZWZYKX1cbiAgICAgICAgICAgICAgeTI9e3N5KGtwLnJlZlkpfVxuICAgICAgICAgICAgICBzdHJva2U9XCJyZ2JhKDYzLCAyMDgsIDIyNCwgMC40NSlcIlxuICAgICAgICAgICAgICBzdHJva2VXaWR0aD17aG92ZXJlZFBvaW50Py5pZCA9PT0ga3AuaWQgPyAyIDogMX1cbiAgICAgICAgICAgICAgc3Ryb2tlRGFzaGFycmF5PXtob3ZlcmVkUG9pbnQ/LmlkID09PSBrcC5pZCA/IHVuZGVmaW5lZCA6ICcyIDInfVxuICAgICAgICAgICAgLz5cbiAgICAgICAgICApKX1cblxuICAgICAgICAgIHsvKiBLZXlwb2ludHMgcmVuZGVyIHdpdGggc2VxdWVudGlhbCBzdGFnZ2VyZWQgYW5pbWF0aW9ucyAqL31cbiAgICAgICAgICB7a2V5cG9pbnRzLm1hcCgoa3AsIGlkeCkgPT4ge1xuICAgICAgICAgICAgY29uc3QgaXNIb3ZlcmVkID0gaG92ZXJlZFBvaW50Py5pZCA9PT0ga3AuaWQ7XG4gICAgICAgICAgICBjb25zdCBwdFggPSBzeChrcC54KTtcbiAgICAgICAgICAgIGNvbnN0IHB0WSA9IHN5KGtwLnkpO1xuICAgICAgICAgICAgY29uc3QgcmVmUHRYID0gc3goa3AucmVmWCk7XG4gICAgICAgICAgICBjb25zdCByZWZQdFkgPSBzeShrcC5yZWZZKTtcbiAgICAgICAgICAgIHJldHVybiAoXG4gICAgICAgICAgICAgIDxnXG4gICAgICAgICAgICAgICAga2V5PXtrcC5pZH1cbiAgICAgICAgICAgICAgICBjbGFzc05hbWU9XCJjdXJzb3ItcG9pbnRlclwiXG4gICAgICAgICAgICAgICAgb25Nb3VzZUVudGVyPXsoKSA9PiBzZXRIb3ZlcmVkUG9pbnQoa3ApfVxuICAgICAgICAgICAgICAgIG9uTW91c2VMZWF2ZT17KCkgPT4gc2V0SG92ZXJlZFBvaW50KG51bGwpfVxuICAgICAgICAgICAgICA+XG4gICAgICAgICAgICAgICAgey8qIFJlZmVyZW5jZSBwb2ludCAoQ3lhbiBvdXRsaW5lIHJpbmcpICovfVxuICAgICAgICAgICAgICAgIDxjaXJjbGVcbiAgICAgICAgICAgICAgICAgIGN4PXtyZWZQdFh9XG4gICAgICAgICAgICAgICAgICBjeT17cmVmUHRZfVxuICAgICAgICAgICAgICAgICAgcj17aXNIb3ZlcmVkID8gNC41IDogMi43NX1cbiAgICAgICAgICAgICAgICAgIGZpbGw9XCJub25lXCJcbiAgICAgICAgICAgICAgICAgIHN0cm9rZT1cIiMzRkQwRTBcIlxuICAgICAgICAgICAgICAgICAgc3Ryb2tlV2lkdGg9XCIxLjVcIlxuICAgICAgICAgICAgICAgICAgb3BhY2l0eT17MC44NX1cbiAgICAgICAgICAgICAgICAvPlxuXG4gICAgICAgICAgICAgICAgey8qIFNvdXJjZSBwb2ludCAoQW1iZXIgc29saWQgY2lyY2xlKSAqL31cbiAgICAgICAgICAgICAgICA8Y2lyY2xlXG4gICAgICAgICAgICAgICAgICBjeD17cHRYfVxuICAgICAgICAgICAgICAgICAgY3k9e3B0WX1cbiAgICAgICAgICAgICAgICAgIHI9e2lzSG92ZXJlZCA/IDUuNSA6IDMuNX1cbiAgICAgICAgICAgICAgICAgIGZpbGw9XCIjRkY5RjQzXCJcbiAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZT1cImFuaW1hdGUtZmFkZUluXCJcbiAgICAgICAgICAgICAgICAgIHN0eWxlPXt7XG4gICAgICAgICAgICAgICAgICAgIGFuaW1hdGlvbkRlbGF5OiBgJHtpZHggKiAzNH1tc2AsXG4gICAgICAgICAgICAgICAgICAgIGFuaW1hdGlvbkZpbGxNb2RlOiAnYm90aCdcbiAgICAgICAgICAgICAgICAgIH19XG4gICAgICAgICAgICAgICAgLz5cblxuICAgICAgICAgICAgICAgIHsvKiBDb25jZW50cmljIHJhZGFyIHRhcmdldGluZyBwdWxzZSBvbiBob3ZlciAqL31cbiAgICAgICAgICAgICAgICB7aXNIb3ZlcmVkICYmIChcbiAgICAgICAgICAgICAgICAgIDxjaXJjbGVcbiAgICAgICAgICAgICAgICAgICAgY3g9e3B0WH1cbiAgICAgICAgICAgICAgICAgICAgY3k9e3B0WX1cbiAgICAgICAgICAgICAgICAgICAgcj17MTF9XG4gICAgICAgICAgICAgICAgICAgIGZpbGw9XCJub25lXCJcbiAgICAgICAgICAgICAgICAgICAgc3Ryb2tlPVwiI0ZGOUY0M1wiXG4gICAgICAgICAgICAgICAgICAgIHN0cm9rZVdpZHRoPVwiMVwiXG4gICAgICAgICAgICAgICAgICAgIHN0cm9rZURhc2hhcnJheT1cIjMgMlwiXG4gICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZT1cImFuaW1hdGUtc3BpblwiXG4gICAgICAgICAgICAgICAgICAvPlxuICAgICAgICAgICAgICAgICl9XG4gICAgICAgICAgICAgIDwvZz5cbiAgICAgICAgICAgICk7XG4gICAgICAgICAgfSl9XG4gICAgICAgIDwvc3ZnPlxuXG4gICAgICAgIHsvKiBEeW5hbWljIEhVRCBJbnNwZWN0b3IgT3ZlcmxheSAqL31cbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJhYnNvbHV0ZSBib3R0b20tMi41IGxlZnQtMi41IHAtMi41IHJvdW5kZWQgYmctWyMwOTBEMTNdLzkwIGJhY2tkcm9wLWJsdXIgYm9yZGVyIGJvcmRlci1zbGF0ZS03MDAvODAgdGV4dC1bMTFweF0gZm9udC1tb25vIHBvaW50ZXItZXZlbnRzLW5vbmUgbWF4LXctc21cIj5cbiAgICAgICAgICB7aG92ZXJlZFBvaW50ID8gKFxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJzcGFjZS15LTAuNSBhbmltYXRlLWZhZGVJblwiPlxuICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRleHQtYW1iZXItNDAwIGZvbnQtYm9sZCBmbGV4IGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWJldHdlZW5cIj5cbiAgICAgICAgICAgICAgICA8c3Bhbj5QT0lOVCBURUxFTUVUUlk6IHtob3ZlcmVkUG9pbnQuaWR9PC9zcGFuPlxuICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInRleHQtWzEwcHhdIHRleHQtZW1lcmFsZC00MDAgZm9udC1ub3JtYWxcIj5cbiAgICAgICAgICAgICAgICAgIFJBTlNBQyBJTkxJRVJcbiAgICAgICAgICAgICAgICA8L3NwYW4+XG4gICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRleHQtc2xhdGUtMzAwXCI+XG4gICAgICAgICAgICAgICAgU09VUkNFIENILTI6IFt7aG92ZXJlZFBvaW50Lnh9LCB7aG92ZXJlZFBvaW50Lnl9XSBweFxuICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0ZXh0LWN5YW4tMzAwXCI+XG4gICAgICAgICAgICAgICAgUkVGIExST0M6IFt7aG92ZXJlZFBvaW50LnJlZlh9LCB7aG92ZXJlZFBvaW50LnJlZll9XSBweFxuICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0ZXh0LWVtZXJhbGQtNDAwXCI+XG4gICAgICAgICAgICAgICAgUkVTSURVQUw6IHtob3ZlcmVkUG9pbnQucmVzaWR1YWwudG9GaXhlZCgyKX0gcHggKCZEZWx0YTtYPXtob3ZlcmVkUG9pbnQuZHh9cHgsICZEZWx0YTtZPXtob3ZlcmVkUG9pbnQuZHl9cHgpXG4gICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgKSA6IChcbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGV4dC1zbGF0ZS00MDAgZmxleCBpdGVtcy1jZW50ZXIgZ2FwLTJcIj5cbiAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwidy0xLjUgaC0xLjUgcm91bmRlZC1mdWxsIGJnLWN5YW4tNDAwIGFuaW1hdGUtcGluZ1wiIC8+XG4gICAgICAgICAgICAgIDxzcGFuPkhPVkVSIE9WRVIgQU5ZIFRJRS1QT0lOVCBUTyBSRUFEIFNVQi1QSVhFTCBWRUNUT1IgVEVMRU1FVFJZPC9zcGFuPlxuICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgKX1cbiAgICAgICAgPC9kaXY+XG5cbiAgICAgICAgey8qIExlZ2VuZCAqL31cbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJhYnNvbHV0ZSB0b3AtMi41IHJpZ2h0LTIuNSBmbGV4IGl0ZW1zLWNlbnRlciBnYXAtMyBiZy1bIzBBMEUxNF0vOTAgYmFja2Ryb3AtYmx1ciBib3JkZXIgYm9yZGVyLXNsYXRlLTgwMCBweC0zIHB5LTEuNSByb3VuZGVkIHRleHQtWzEwcHhdIGZvbnQtbW9ub1wiPlxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBpdGVtcy1jZW50ZXIgZ2FwLTEuNVwiPlxuICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwidy0yLjUgaC0yLjUgcm91bmRlZC1mdWxsIGJnLVsjRkY5RjQzXVwiIC8+XG4gICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJ0ZXh0LXNsYXRlLTMwMFwiPkNILTIgT0hSQyAoU291cmNlKTwvc3Bhbj5cbiAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZsZXggaXRlbXMtY2VudGVyIGdhcC0xLjVcIj5cbiAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInctMi41IGgtMi41IHJvdW5kZWQtZnVsbCBib3JkZXIgYm9yZGVyLVsjM0ZEMEUwXVwiIC8+XG4gICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJ0ZXh0LXNsYXRlLTMwMFwiPkxSTyBOQUMgKFJlZmVyZW5jZSk8L3NwYW4+XG4gICAgICAgICAgPC9kaXY+XG4gICAgICAgIDwvZGl2PlxuICAgICAgPC9kaXY+XG4gICAgPC9kaXY+XG4gICk7XG59XG4iXSwiZmlsZSI6IkM6L1VzZXJzL2hpbWFuL09uZURyaXZlL0Rlc2t0b3AvU0lIIDIwMjYvVllPTS9WWU9NL3JlZmVyL3NyYy9jb21wb25lbnRzL0tleXBvaW50VGVsZW1ldHJ5UmFkYXIudHN4In0=
