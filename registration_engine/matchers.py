@@ -44,7 +44,15 @@ def detect_and_match(
     if algorithm_lower == "sift":
         detector = cv2.SIFT_create()
     else:  # akaze
-        detector = cv2.AKAZE_create()
+        if hasattr(cv2, "AKAZE_create"):
+            detector = cv2.AKAZE_create()
+        elif hasattr(getattr(cv2, "features2d", None), "AKAZE_create"):
+            detector = cv2.features2d.AKAZE_create()
+        else:
+            raise RuntimeError(
+                f"OpenCV build (v{getattr(cv2, '__version__', 'unknown')}) does not support AKAZE. "
+                "Ensure opencv-python-headless<5.0.0 is installed, or switch to SIFT / RIFT2."
+            )
 
     # Detect keypoints and compute descriptors
     kp_source, desc_source = detector.detectAndCompute(source_img, None)
