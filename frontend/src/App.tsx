@@ -139,7 +139,7 @@ export default function App() {
       })
       .catch((err) => {
         console.warn(`Backend server at ${API_BASE_URL} not reachable:`, err);
-        setRegistrationError(`Backend server at ${API_BASE_URL} not reachable. Ensure FastAPI is running on port 8000.`);
+        setRegistrationError(`Backend server at ${API_BASE_URL} is not reachable. Check your connection or backend status.`);
       });
   }, []);
 
