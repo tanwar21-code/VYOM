@@ -353,7 +353,9 @@ def compare_algorithms(
                     "error": pipe_res.get("error", "Failed to compute inliers."),
                 }
 
-        with concurrent.futures.ThreadPoolExecutor(max_workers=len(eval_algorithms)) as executor:
+        # Use sequential execution by default on cloud free-tier to prevent memory spikes
+        max_workers = 1 if os.getenv("SEQUENTIAL_COMPARE", "true").lower() == "true" else min(2, len(eval_algorithms))
+        with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
             results = list(executor.map(eval_single, eval_algorithms))
 
     # Flag best performance attributes among successful algorithms
