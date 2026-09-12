@@ -1,0 +1,44 @@
+# Git
+.git
+.gitignore
+
+# Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+
+# Python cache & bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Frontend (deployed separately)
+frontend/
+node_modules/
+
+# Large binaries, presentations, & PDFs
+*.pdf
+presentation guiide.pdf
+Comparative_Evaluation_of_Traditional_and_Deep_Lea.pdf
+
+# IDE & OS files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Documentation & Markdown guides
+docs/
+guide.md
+.streamlit/
+
+# Temporary / logs
+*.log
+chrome_profile_tmp/

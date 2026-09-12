@@ -236,6 +236,31 @@ Open your browser at: **[http://localhost:8501](http://localhost:8501)**
 
 ---
 
+### Option C: Docker Container (Render / Cloud Deployment)
+
+Build and run the containerized backend:
+```bash
+# Build Docker image
+docker build -t vyom-backend .
+
+# Run container locally (maps to port 8000)
+docker run -p 8000:8000 -e PORT=8000 vyom-backend
+```
+
+#### Deploying on Render:
+1. Push your repository to GitHub or GitLab.
+2. In the [Render Dashboard](https://dashboard.render.com), click **New +** -> **Web Service**.
+3. Select your repository.
+4. Render will automatically detect the `Dockerfile` and `render.yaml`.
+5. Configuration details:
+   - **Environment:** Docker
+   - **Health Check Path:** `/health`
+   - **Environment Variables (Optional):**
+     - `CORS_ORIGINS`: Comma-separated allowed frontend URLs (e.g., `https://your-frontend.onrender.com,https://your-frontend.vercel.app`)
+     - `PORT`: (Auto-assigned by Render, defaults to 10000)
+
+---
+
 ## Verification & Automated Testing
 
 The repository includes a comprehensive test suite covering edge cases, image I/O, mathematical transformations, and full end-to-end multi-algorithm execution.
