@@ -78,14 +78,10 @@ def _load_single_image(image_path: str | Path) -> np.ndarray:
         raise RegistrationInputError(f"Unable to read or parse image '{path}': {exc}") from exc
 
 
-import os
-
-
 def load_and_resample(
     source_path: str,
     reference_path: str,
-    target_gsd: float | None = None,
-    max_dimension: int | None = 1600,
+    target_gsd: float | None = None
 ) -> tuple[np.ndarray, np.ndarray]:
     """Load both images as grayscale numpy arrays and optionally resample them.
 
@@ -93,7 +89,6 @@ def load_and_resample(
         source_path: Filepath to the source image (e.g. Chandrayaan-2 swath).
         reference_path: Filepath to the reference image (e.g. LRO NAC or basemap).
         target_gsd: Optional target ground-sampling-distance or direct resize ratio.
-        max_dimension: Maximum dimension (width/height) to safely bound memory usage. Default 1600.
 
     Returns:
         tuple[np.ndarray, np.ndarray]: (source_image, reference_image) as 2D uint8 arrays.
@@ -104,25 +99,10 @@ def load_and_resample(
     source_img = _load_single_image(source_path)
     ref_img = _load_single_image(reference_path)
 
-    # Safe dimension bounding to prevent out-of-memory crashes on massive orbiter swaths (e.g., 9000x1200)
-    max_dim_env = os.getenv("MAX_IMAGE_DIM")
-    effective_max_dim = int(max_dim_env) if max_dim_env else (max_dimension or 1600)
-    if effective_max_dim > 0:
-        for idx in range(2):
-            target = source_img if idx == 0 else ref_img
-            h, w = target.shape[:2]
-            peak = max(h, w)
-            if peak > effective_max_dim:
-                scale = effective_max_dim / peak
-                new_w = max(1, int(round(w * scale)))
-                new_h = max(1, int(round(h * scale)))
-                resized = cv2.resize(target, (new_w, new_h), interpolation=cv2.INTER_AREA)
-                if idx == 0:
-                    source_img = resized
-                else:
-                    ref_img = resized
-
-    # Ground-sampling-distance-aware resizing if specified
+    # TODO: Full ground-sampling-distance-aware resizing needs each product's metadata
+    # (e.g. parsing spatial resolution from PDS4 XML labels, GeoTIFF tags, or LRO/Chandrayaan-2
+    # mission headers). In this MVP, if target_gsd is provided, we assume the caller passes
+    # the correct resize ratio directly if known; otherwise images are returned unresized.
     if target_gsd is not None and target_gsd > 0 and target_gsd != 1.0:
         new_source_w = max(1, int(round(source_img.shape[1] * target_gsd)))
         new_source_h = max(1, int(round(source_img.shape[0] * target_gsd)))

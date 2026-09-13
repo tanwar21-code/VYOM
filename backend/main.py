@@ -29,27 +29,17 @@ app = FastAPI(
     version="1.0.0",
 )
 
-# Enable CORS for frontend clients (local development, Render, Vercel, and custom domains)
-cors_env = os.getenv("CORS_ORIGINS", "")
-allowed_origins = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
-    "http://localhost:8000",
-]
-if cors_env:
-    allowed_origins.extend([o.strip() for o in cors_env.split(",") if o.strip()])
-
-cors_regex = os.getenv(
-    "CORS_ORIGIN_REGEX",
-    r"^https?://(localhost|127\.0\.0\.1)(:\d+)?$|^https://.*\.onrender\.com$|^https://.*\.vercel\.app$"
-)
-
+# Enable CORS for frontend development server (Vite on port 3000, 5173, etc.)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=allowed_origins,
-    allow_origin_regex=cors_regex,
+    allow_origins=[
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "http://localhost:8000",
+    ],
+    allow_origin_regex=r"http://(localhost|127\.0\.0\.1)(:\d+)?",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -353,9 +343,7 @@ def compare_algorithms(
                     "error": pipe_res.get("error", "Failed to compute inliers."),
                 }
 
-        # Use sequential execution by default on cloud free-tier to prevent memory spikes
-        max_workers = 1 if os.getenv("SEQUENTIAL_COMPARE", "true").lower() == "true" else min(2, len(eval_algorithms))
-        with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=len(eval_algorithms)) as executor:
             results = list(executor.map(eval_single, eval_algorithms))
 
     # Flag best performance attributes among successful algorithms
